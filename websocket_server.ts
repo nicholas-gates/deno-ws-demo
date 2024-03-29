@@ -1,6 +1,3 @@
-// Import necessary modules from Deno's standard library
-import { serve } from "https://deno.land/std/http/server.ts";
-
 // Function to handle WebSocket connections
 async function handleWebSocket(request: Request): Promise<Response> {
     // Upgrade the HTTP request to a WebSocket connection
@@ -21,7 +18,7 @@ async function handleWebSocket(request: Request): Promise<Response> {
 
 // Create a server that listens on port 8000
 console.log("WebSocket server started on ws://localhost:8000");
-serve(async (req) => {
+Deno.serve(async (req) => {
     // Check if the request is attempting to upgrade to WebSocket
     if (req.headers.get("upgrade") === "websocket") {
         return handleWebSocket(req);
